@@ -10,22 +10,13 @@ class Op : public Base {
     public:
         Op(double value) : Base() { number = value; }
         virtual double evaluate() { return number; }
-        virtual std::string stringify() { return std::to_string(myVal); }
+        virtual std::string stringify(){return std::to_string(number);}
+        double getValue(){return number;}
+        void setVal(double v){number = v;}
     private:
+	double number = 0;
 	Base* leftNode = NULL;
 	Base* rightNode = NULL;
-	double number;
-};
-
-class Rand : public Base {
-    public:
-        Rand(double value) : Base() { number = rand() % 100; }
-        virtual double evaluate() { return number; }
-        virtual std::string stringify() { return std::to_string(number); }
-    private:
-	Base* leftNode = NULL;
-	Base* rightNode = NULL;
-	double number;
 };
 
 
