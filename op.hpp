@@ -19,4 +19,6 @@ class Op : public Base {
 	Base* rightNode = NULL;
 };
 
+
+
 #endif //__OP_HPP__
