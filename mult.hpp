@@ -2,6 +2,7 @@
 #define MULT_HPP
 
 #include "base.hpp"
+#include "op.hpp"
 #include <stdexcept>
 
 class Mult : public Base {
@@ -10,19 +11,21 @@ class Mult : public Base {
 		Base* rightNode;
 	public:
 		Mult(Base* left, Base* right) : Base() {
-			if(left == nullptr || right == nullptr){
-				throw std::invalid_argument("Null arg passed thru Mult class.");
-			}
-			leftNode = left;
-			rightNode = right;
+			this->leftNode = left;
+			this->rightNode = right;
 		}
-		
+		/*
+		~Mult(){
+			delete leftNode, rightNode;
+		} 
+		*/		
+
 		double evaluate() {
 			return leftNode->evaluate() * rightNode->evaluate();
 		}
 		
 		std::string stringify(){
-			return "(" + leftNode->stringify() + "*" + rightNode->stringify() + ")";
+			return "(" + this->leftNode->stringify() + "*" + this->rightNode->stringify() + ")";
 		}
 };
 

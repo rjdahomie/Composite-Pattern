@@ -11,13 +11,14 @@ class Div : public Base {
 		Base* rightNode;
 	public:
 		Div(Base* left, Base* right) : Base() {
-			if(left == nullptr || right == nullptr){
-				throw std::invalid_argument("Null arg passed thru Div class.");
-			}
 			leftNode = left;
 			rightNode = right;
 		}
-		
+		/*
+		~Div(){
+			delete leftNode, rightNode;
+		}
+		*/
 		double evaluate() {
 			return leftNode->evaluate() / rightNode->evaluate();
 		}

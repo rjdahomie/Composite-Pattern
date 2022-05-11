@@ -7,16 +7,12 @@
 using namespace std;
 
 class Op : public Base {
+    private:
+	double number=0;
     public:
-        Op(double value) : Base() { number = value; }
+        Op(double value) : number(value), Base() { }
         virtual double evaluate() { return number; }
         virtual std::string stringify(){return std::to_string(number);}
-        double getValue(){return number;}
-        void setVal(double v){number = v;}
-    private:
-	double number = 0;
-	Base* leftNode = NULL;
-	Base* rightNode = NULL;
 };
 
 

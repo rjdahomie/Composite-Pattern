@@ -10,12 +10,14 @@ class Sub : public Base {
 		Base* rightNode;
 	public:
 		Sub(Base* left, Base* right) : Base() {
-			if(left == nullptr || right == nullptr){
-				throw std::invalid_argument("Null arg passed thru Sub class.");
+			leftNode = left;
+			rightNode = right;
 		}
-		leftNode = left;
-		rightNode = right;
+	/*
+	~Sub(){
+		delete leftNode, rightNode;
 	}
+	*/
 	
 	double evaluate(){
 		return leftNode->evaluate() - rightNode->evaluate();

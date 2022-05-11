@@ -15,8 +15,6 @@ class Rand : public Base {
         void setVal (double v){number = v;}
     private:
         double number = 0.0;
-        Base* leftNode = NULL;
-        Base* rightNode = NULL;
 };
 
 #endif

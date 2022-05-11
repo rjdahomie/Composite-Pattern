@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <limits>
 #include <cmath>
+#include <math.h>
 
 class Pow : public Base {
 	private:
@@ -13,11 +14,14 @@ class Pow : public Base {
 
     	public:
       		Pow(Base* left, Base* right) : Base() {
-         		if(left == nullptr || right == nullptr){throw std::invalid_argument("Null arg being passed in Pow class.");}
-         		if(left->evaluate() < 0 && !( right->evaluate() == floor(right->evaluate()) ) ){throw std::invalid_argument("Imaginary Number.");}
     			leftNode = left;
     			rightNode = right;
 		}
+		/*
+		~Pow(){
+			delete leftNode, rightNode;
+		}
+		*/
       		
 		double evaluate(){
     			return pow(leftNode->evaluate(), rightNode->evaluate());
