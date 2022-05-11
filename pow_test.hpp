@@ -48,7 +48,7 @@ TEST(PowTest, TEST_FOUR){
 TEST(PowTest, OperatorTEST_ONE){
     Base *a = new Op(5), *b = new Op(4), *c = new Op(2);
     Base *left = new Div(a, b), *test = new Pow(left, c);
-    double check = (5/4.0)(5/4.0);
+    double check = (5/4.0)*(5/4.0);
     EXPECT_EQ(check, test->evaluate());
     delete a, b, c, left, test;
 }
@@ -76,9 +76,9 @@ TEST(PowTest, Throw_ONE){
 }
 
 TEST(PowTest, Throw_TWO){
-    Base *a = new Op(-5), *b = new Op(-3),c = new Op(2), *right = new Div(b, c);
+    Base *a = new Op(-5), *b = new Op(-3),*c = new Op(2), *right = new Div(b, c);
     EXPECT_THROW(Pow(a, right), std::invalid_argument);
-    delete a, b, right;
+    delete a, b, c, right;
 }
 
 TEST(PowTest, Throw_THREE){
@@ -88,19 +88,19 @@ TEST(PowTest, Throw_THREE){
 }
 TEST(PowTest, stringify_ONE){
     Base *a = new Op(1),*b = new Pow(a, a);
-    EXPECT_EQ("(1.0000001.000000)", b->stringify());
+    EXPECT_EQ("(1.000000**1.000000)", b->stringify());
     delete a, b;
 }
 
 TEST(PowTest, stringify_TWO){
     Base *a = new Op(78),*b = new Op(54), *c = new Pow(a, b);
-    EXPECT_EQ("(78.00000054.000000)", c->stringify());
+    EXPECT_EQ("(78.000000**54.000000)", c->stringify());
     delete a, b, c;
 }
 
 TEST(PowTest, stringify_THREE){
     Base *a = new Op(1),*b = new Mult(a, a), *c = new Pow(b, a);
-    EXPECT_EQ("((1.0000001.000000)**1.000000)", c->stringify());
+    EXPECT_EQ("((1.000000*1.000000)**1.000000)", c->stringify());
     delete a, b, c;
 }
 #endif
